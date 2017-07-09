@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+    line-height: 1.7em;
+    font-family: "Helvetica Neue";
+    font-size: 15px;
+}
+
+h1 {
+    font-size: 20px;
+}
+
+header h1 {
+    font-size: 30px;
+}
+
+body {
+    background-color: #232323;
+}
+
+#app {
+    width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+}
+
+.button-bar {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+button {
+    padding: 5px 15px;
+    background-color: orangered;
+    margin: 0 2px;
+    color: white;
+    border: 1px solid #000;
+}
+
+input {
+    padding: 5px 8px;
+    border: 1px solid #000;
+}
+
+.entity {
+    width: 360px;
+    padding: 20px;
+    text-align: center;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.clear {
+    clear: both;
+}
+
+.currentHealth, .health-bar {
+    height: 40px;
+}
+
+.info {
+    padding: 20px;
+    background-color: lightgrey;
+    margin-bottom: 20px;
+}
+
+.health-bar {
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    width: 300px;
+}
+
+.attack-button {
+}
+
+.special-button {
+    background-color: blue;
+}
+
+.heal-button {
+    background-color: green;
+}
+
+.surrender-button {
+    background-color: white;
+    color: #232323;
+}
+
+button.disabled {
+    background-color: lightgrey !important;
+    color: black !important;
+}
+
+.logs {
+    border-top: 1px solid #ccc;
+    padding: 20px;
+}
+
+.logs li {
+    list-style-type: none;
+    text-align: center;
+    font-size: 15px;
+    background-color: lightgrey;
+    padding: 10px 20px;
+    margin-bottom: 2px;
+}

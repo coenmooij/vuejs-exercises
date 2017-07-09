@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Beat the monster</title>
+    <link rel="stylesheet" href="styles.css" type="text/css">
+    <script src="vue.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+    <header>
+        <h1>Beat the Monster!</h1>
+        <p>because fuck monsters right? It's not like they have feelings!</p>
+    </header>
+
+    <!-- Before Game -->
+    <template v-if="!active">
+        <div class="button-bar">
+            <label for="playerName">Name:</label>
+            <input id="playerName" type="text" v-model="name" placeholder="John Doe">
+            <button @click="startGame">Start Game</button>
+        </div>
+    </template>
+
+    <!-- During Game -->
+    <template v-else>
+
+        <!-- TODO : Refactor to use v-for directive -->
+        <div class="button-bar" v-if="!gameOver">
+            <div class="info">
+                <h1>{{ turn }}'s move</h1>
+                <p v-if="disabled">Monster is looking to attack you!</p>
+                <p v-else>Choose your weapon!</p>
+            </div>
+            <button @click="attack" class="attack-button" :class="{disabled: disabled}" :disabled="disabled">Attack
+            </button>
+            <button @click="special" class="special-button" :class="{disabled: disabled}" :disabled="disabled">Special
+            </button>
+            <button @click="heal" class="heal-button" :class="{disabled: disabled}" :disabled="disabled">Heal</button>
+            <button @click="surrender" class="surrender-button" :disabled="disabled">Surrender</button>
+        </div>
+
+        <div class="button-bar" v-else>
+            <div class="info">
+                <h1>{{ turn }} Won!</h1>
+                <p v-if="!playerWon">Ah sorry that you are such a noob. Want to try again?</p>
+                <p v-else>Don't you just love the smell of dead monster in the morning? Let's kill some more!</p>
+            </div>
+            <button @click="resetGame">New Game</button>
+        </div>
+
+        <!-- Player -->
+        <div class="left entity">
+
+            <h1>{{ name }} ({{ playerHealth }}%)</h1>
+            <div class="health-bar">
+                <div class="currentHealth"
+                     :style="{'width': playerHealth + '%', 'background-color': playerColor}">
+                </div>
+            </div>
+            <!--Log-->
+
+        </div>
+
+        <!-- Monster -->
+        <div class="right entity">
+
+            <h1>Monster ({{ monsterHealth }}%)</h1>
+            <div class="health-bar">
+                <div class="currentHealth"
+                     :style="{'width': monsterHealth + '%', 'background-color': monsterColor}">
+                </div>
+            </div>
+            <!--Log-->
+
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="logs">
+            <ul>
+                <li v-for="log in logs">{{ log }}</li>
+            </ul>
+        </div>
+    </template>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
