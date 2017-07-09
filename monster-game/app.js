@@ -105,7 +105,7 @@ new Vue({
             this.playerWon = false;
         },
         log: function (actor, target, action, points) {
-            this.logs.push(actor + ' did ' + action + ' with ' + points + ' points on ' + target);
+            this.logs.unshift(actor + ' did ' + action + ' with ' + points + ' points on ' + target);
         },
     },
 
