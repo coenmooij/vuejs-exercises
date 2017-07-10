@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+    line-height: 1.7em;
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 15px;
+}
+
+h1 {
+    font-size: 30px;
+}
+
+body {
+    background-color: #232323;
+}
+
+#app {
+    width: 80%;
+    margin: 0 auto;
+    background-color: white;
+    border-left: 1px solid lightgrey;
+    border-right: 1px solid lightgrey;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    border-bottom: 1px solid lightgrey;
+}
+
+.project {
+    padding: 20px;
+    background-color: #f2f2f3;
+    margin: 20px;
+}
+
+.project h2 {
+    font-size:20px;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.clear {
+    clear: both;
+}
+
+.info {
+    padding: 20px;
+    background-color: lightgrey;
+    margin: 20px;
+}
