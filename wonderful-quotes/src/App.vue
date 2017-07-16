@@ -40,10 +40,14 @@
         methods: {
             addQuote(author, quote){
                 if (this.numberOfQuotes < this.maxQuotes) {
-                    this.quotes.push({
-                        author: author,
-                        quote: quote,
-                    });
+                    if(author === '' || quote === ''){
+                        alert("Quote & Author can't be empty");
+                    } else {
+                        this.quotes.push({
+                            author: author,
+                            quote: quote,
+                        });
+                    }
                 } else {
                     alert('Maximum number reached, remove one to add another');
                 }
