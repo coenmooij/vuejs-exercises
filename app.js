@@ -12,6 +12,11 @@ new Vue({
                 description: 'A quotes displaying app in which you can add and remove quotes',
                 demo: '/wonderful-quotes',
                 sourceCode: 'https://github.com/coenmooij/vuejs-exercises/tree/master/wonderful-quotes',
+            }, {
+                name: 'Super Quiz',
+                description: 'A simple math quiz with some cool css animation',
+                demo: '/super-quiz',
+                sourceCode: 'https://github.com/coenmooij/vuejs-exercises/tree/master/super-quiz',
             },
         ],
     }
