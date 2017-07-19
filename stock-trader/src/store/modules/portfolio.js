@@ -9,22 +9,26 @@ const mutations = {
             return stock.id === id
         });
         if (record) {
-            record.amount += amount;
+            record.amount += parseInt(amount);
         } else {
-            state.stocks.push({id: id, amount: amount});
+            state.stocks.push({id: id, amount: parseInt(amount)});
         }
-        state.funds -= price * amount;
+        state.funds -= (price * parseInt(amount));
     },
     'SELL_STOCK'(state, {id, amount, price}){
         const record = state.stocks.find(stock => {
             return stock.id === id
         });
-        if (record.amount > amount) {
-            record.amount -= amount;
+        if (record.amount > parseInt(amount)) {
+            record.amount -= parseInt(amount);
         } else {
             state.stocks.splice(state.stocks.indexOf(record), 1);
         }
-        state.funds += price * amount;
+        state.funds += (price * parseInt(amount));
+    },
+    'SET_PORTFOLIO'(state, {funds, stockPortfolio}){
+        state.funds = funds;
+        state.stocks = stockPortfolio ? stockPortfolio : [];
     }
 };
 

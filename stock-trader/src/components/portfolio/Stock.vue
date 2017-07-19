@@ -3,22 +3,22 @@
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">{{ stock.name }}
-                    <small>Current price: {{ stock.price }}, Amount: {{ stock.amount }}</small>
+                    <small>Current price: {{ stock.price | currency }}, Amount: {{ stock.amount }}</small>
                 </h3>
             </div>
             <div class="panel-body">
-                <div class="pull-left">
+                <div class="pull-left col-xs-6">
                     <input :id="stock.id" class="form-control" type="number" placeholder="Amount" v-model="amount">
                 </div>
                 <div class="pull-right">
-                    <button @click="sell" :disabled="stock.amount < amount || amount <= 0 || Number.isInteger(amount)" class="btn btn-danger">
+                    <button @click="sell" :disabled="!canSell"
+                            class="btn btn-danger">
                         Sell ({{ amount }})
                     </button>
                 </div>
             </div>
             <div class="panel-footer text-center">
-                &nbsp;<span v-if="amount > 0">{{ amount }} x {{ stock.price }} =
-                    {{ profit }}</span>&nbsp;
+                &nbsp;<span v-if="amount > 0">{{ profit | currency }}</span>&nbsp;
             </div>
         </div>
     </div>
@@ -33,12 +33,12 @@
                 id: Number,
                 name: String,
                 price: Number,
+                amount: Number,
             }
         },
         data(){
             return {
                 amount: 0,
-                budget: 2000, // TODO : make dynamic
             }
         },
         methods: {
@@ -54,6 +54,9 @@
             }
         },
         computed: {
+            canSell(){
+                return this.stock.amount >= parseInt(this.amount) && parseInt(this.amount) > 0;
+            },
             profit(){
                 return this.stock.price * this.amount;
             },

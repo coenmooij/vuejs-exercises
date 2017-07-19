@@ -3,22 +3,24 @@
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">{{ stock.name }}
-                    <small>Current price: {{ stock.price }}</small>
+                    <small>Current price: {{ stock.price | currency }}</small>
                 </h3>
             </div>
             <div class="panel-body">
-                <div class="pull-left">
+                <div class="pull-left col-xs-6">
                     <input :id="stock.id" class="form-control" type="number" placeholder="Amount" v-model="amount">
                 </div>
                 <div class="pull-right">
-                    <button @click="buy" :disabled="amount <= 0 || Number.isInteger(amount)" class="btn btn-success">
+                    <button @click="buy" :disabled="amount <= 0 || Number.isInteger(amount) || !canAfford"
+                            class="btn btn-success">
                         Buy ({{ amount }})
                     </button>
                 </div>
             </div>
             <div class="panel-footer text-center">
-                &nbsp;<span v-if="amount > 0">{{ amount }} x {{ stock.price }} = <span
-                    :class="{red: !canAfford, green: canAfford}">{{ cost }}</span></span>&nbsp;
+                &nbsp;<span v-if="amount > 0" :class="{red: !canAfford, green: canAfford}">
+                {{ cost | currency }}
+                </span>&nbsp;
             </div>
         </div>
     </div>
@@ -44,14 +46,14 @@
                 return this.stock.price * this.amount;
             },
             canAfford(){
-                return this.budget - this.cost > 0;
+                return this.$store.getters.funds - this.cost > 0;
             }
         },
         methods: {
             buy(){
                 const order = {
                     id: this.stock.id,
-                    price: this.price,
+                    price: this.stock.price,
                     amount: this.amount,
                 };
                 this.$store.dispatch('buyStock', order);
