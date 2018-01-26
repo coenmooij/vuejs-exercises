@@ -4,7 +4,7 @@
         <hr>
         <app-progress-bar :quotes="numberOfQuotes" :maxQuotes="maxQuotes"></app-progress-bar>
         <hr>
-        <app-quote v-for="(quote, index) in quotes" :quote="quote" @removeQuote="removeQuote(index)"></app-quote>
+        <app-quote v-for="quote in quotes" :key="quote.index" :data="quote" :quote="quote" @removeQuote="removeQuote(index)"></app-quote>
     </div>
 </template>
 
