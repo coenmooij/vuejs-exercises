@@ -1,6 +1,7 @@
-# stock-trader
+# Stock Trader
+A cryptocurrency stock trading game with a Firebase connection
 
-> A Vue.js project
+Live on http://vuejs-exercises.coenmooij.nl/stock-trader/
 
 ## Build Setup
 
