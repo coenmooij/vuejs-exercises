@@ -1,7 +1,7 @@
 # Stock Trader
 A cryptocurrency stock trading game with a Firebase connection
 
-Live on http://vuejs-exercises.coenmooij.nl/stock-trader/
+Live on https://coenmooij.github.io/vuejs-exercises/stock-trader/
 
 ## Build Setup
 
